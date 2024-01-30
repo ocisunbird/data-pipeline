@@ -9,6 +9,8 @@ class InvalidEventException(message: String) extends Exception(message) {
     this(message)
     val partitionNum = event.getOrElse("partition", null)
     val offset = event.getOrElse("offset", null)
-    logger.error(s"Error while processing message for Partition: ${partitionNum} and Offset: ${offset}. Error : $message", cause)
+    println(s"Error while processing message for Partition: ${partitionNum} and Offset: ${offset}. Error : $message", cause)
+
+    logger.info(s"Error while processing message for Partition: ${partitionNum} and Offset: ${offset}. Error : $message", cause)
   }
 }
