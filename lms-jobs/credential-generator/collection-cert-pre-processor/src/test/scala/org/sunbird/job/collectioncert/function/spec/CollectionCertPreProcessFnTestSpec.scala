@@ -70,7 +70,8 @@ class CollectionCertPreProcessFnTestSpec extends BaseTestSpec {
         jedis.select(jobConfig.contentCacheStore)
         jedis.set("content_001", """{"identifier":"content_001","contentType": "selfAssess"}""")
         val certEvent = new CollectionCertPreProcessorFn(jobConfig, mockHttpUtil)(stringTypeInfo, cassandraUtil).issueCertificate(event, template)(cassandraUtil, cache, contentCache, mockMetrics, jobConfig, mockHttpUtil)
-        certEvent shouldNot be(null)        
+        println(s"event = $certEvent")
+        certEvent shouldNot be(null)
     }
 
 
