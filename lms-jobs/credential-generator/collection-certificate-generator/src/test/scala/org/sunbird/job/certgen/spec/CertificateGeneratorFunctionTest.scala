@@ -67,6 +67,7 @@ class CertificateGeneratorFunctionTest extends BaseTestSpec {
 
   "Certificate generation process " should " not throw exception on enabled suppress exception for signatorylist with empty field values" in {
     val event = new Event(JSONUtil.deserialize[java.util.Map[String, Any]](EventFixture.EVENT_4), 0, 0)
+    new CertificateGeneratorFunction(jobConfig, httpUtil, storageService, cassandraUtil).processElement(event, null, mockMetrics)
     noException should be thrownBy new CertificateGeneratorFunction(jobConfig, httpUtil, storageService, cassandraUtil).processElement(event, null, mockMetrics)
   }
 
@@ -141,7 +142,10 @@ class CertificateGeneratorFunctionTest extends BaseTestSpec {
       "certificateLabel" -> certModel.certificateName,
       "status" -> "ACTIVE",
       "templateUrl" -> event.svgTemplate,
-      "training" -> Training(related.getOrElse(jobConfig.COURSE_ID, "").asInstanceOf[String], event.courseName, "Course", related.getOrElse(jobConfig.BATCH_ID, "").asInstanceOf[String]),
+      "training" -> Training(related.getOrElse(jobConfig.COURSE_ID, "").asInstanceOf[String],
+        event.courseName, "Course",
+        related.getOrElse(jobConfig.BATCH_ID, "").asInstanceOf[String],
+        event.courseDuration),
       "recipient" -> Recipient(certModel.identifier, certModel.recipientName, null),
       "issuer" -> Issuer(certModel.issuer.url, certModel.issuer.name, kid),
       "signatory" -> event.signatoryList,
