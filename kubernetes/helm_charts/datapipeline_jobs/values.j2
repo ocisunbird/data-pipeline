@@ -502,8 +502,8 @@ user-deletion-cleanup:
   user-deletion-cleanup: |+
     include file("/data/flink/conf/base-config.conf")
     kafka {
-      input.topic = ${job.env}".delete.user"
-      groupId = ${job.env}"-delete-user-group"
+      input.topic = "{{ env_name }}.delete.user"
+      groupId = "{{ env_name }}-delete-user-group"
     }
     task {
       user.deletion.cleanup.parallelism = {{ user_deletion_cleanup_job_parallelism }}
