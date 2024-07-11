@@ -6,7 +6,8 @@ jobmanager_blob_port: 6124
 jobmanager_query_port: 6125
 jobmanager_ui_port: 8081
 jobmanager_prom_port: 9250
-jobmanager_heap_memory: 1024
+#jobmanager_heap_memory: 1024
+jobmanager_heap_memory: 2048
 jobmanager_ui_rest_port: 80
 jobmanager_ui_tcp_port: 8081
 jobmanager_ui_service:
