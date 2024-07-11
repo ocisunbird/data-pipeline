@@ -229,6 +229,7 @@ class CertificateGeneratorFunction(config: CertificateGeneratorConfig, httpUtil:
       case config.rcCreateApi =>
         val plainReq: String = ScalaModuleJsonUtils.serialize(request)
         val req = removeBadChars(plainReq)
+        println("RC Create API request: " + req)
         logger.info("RC Create API request: " + req)
         val httpResponse = httpUtil.post(uri, req)
         if(httpResponse.status == 200) {
