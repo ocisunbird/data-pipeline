@@ -24,6 +24,7 @@
 		<module>notification</module>
 		<module>dp-core</module>
 		<module>lms-jobs</module>
+		<module>user-org-jobs</module>
 	</modules>
 
 	<properties>
@@ -34,6 +35,7 @@
 		<flink.version>1.13.5</flink.version>
 		<kafka.version>2.4.1</kafka.version>
 		<jackson-jaxrs.version>1.9.13</jackson-jaxrs.version>
+		<surefire.plugin.version>2.22.2</surefire.plugin.version>
 		<scoverage.plugin.version>1.4.0</scoverage.plugin.version>
 		<java.target.runtime>11</java.target.runtime>
 		<sonar.exclusions>**/**.java</sonar.exclusions>
